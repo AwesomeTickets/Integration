@@ -1,0 +1,16 @@
+sudo: required
+
+os:
+  - linux
+
+services:
+  - docker
+
+branches:
+  only:
+    - master
+    - /^(dev)|(dev_.*)$/
+
+script:
+  - chmod +x ./integration_test.sh
+  - ./integration_test.sh -u
