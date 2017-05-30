@@ -26,4 +26,4 @@ Integration and deployment scripts of AwesomeTickets system.
 
 ## License
 
-See the [LICENSE](./LICENSE) file for license rights and limitations.
+See the [LICENSE](./LICENSE) file for license rights and limitations. 
