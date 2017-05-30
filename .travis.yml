@@ -24,6 +24,6 @@ before_install:
 
 script:
   - sudo chmod +x ./integration_test.sh
-  - sudo ./integration_test.sh -u
+  - sudo ./integration_test.sh
   - sudo chmod +x ./scripts/travis_docker_save.sh
   - sudo ./scripts/travis_docker_save.sh
