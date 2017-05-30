@@ -3,6 +3,10 @@ sudo: required
 os:
   - linux
 
+cache:
+  directories:
+    - $HOME/docker
+
 services:
   - docker
 
@@ -15,7 +19,11 @@ before_install:
   - sudo apt-get update
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
   - docker --version
+  - sudo chmod +x ./scripts/travis_docker_load.sh
+  - sudo ./scripts/travis_docker_load.sh
 
 script:
   - sudo chmod +x ./integration_test.sh
-  - sudo ./integration_test.sh -u -q
+  - sudo ./integration_test.sh -u
+  - sudo chmod +x ./scripts/travis_docker_save.sh
+  - sudo ./scripts/travis_docker_save.sh

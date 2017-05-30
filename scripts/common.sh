@@ -20,6 +20,11 @@ IMAGE_DB="db-server"
 FILE_COMPOSE="docker-compose.yml"
 FILE_COMPOSE_TEST="docker-compose-test.yml"
 
+FILE_CACHE_SERVICE="${HOME}/docker/${IMAGE_SERVICE}.tar.gz"
+FILE_CACHE_PROXY="${HOME}/docker/${IMAGE_PROXY}.tar.gz"
+FILE_CACHE_CACHE="${HOME}/docker/${IMAGE_CACHE}.tar.gz"
+FILE_CACHE_DB="${HOME}/docker/${IMAGE_DB}.tar.gz"
+
 run_quiet() {
     $1 > /dev/null 2>&1
 }
