@@ -28,6 +28,7 @@ fi
 
 if [ ${REMOTE} != true ]; then
     printf "Deploying...\n"
+    docker swarm init
     docker stack deploy -c ${FILE_COMPOSE} ${STACK}
     printf "Done.\n"
 else

@@ -75,6 +75,7 @@ load_all
 build_all
 
 printf "Creating integration test stack...\n"
+docker swarm init
 docker stack deploy -c ${FILE_COMPOSE_TEST} ${STACK_TEST}
 printf "Done.\n\n"
 
