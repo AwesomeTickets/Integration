@@ -33,6 +33,14 @@ clean_stack() {
 
 clean_data() {
     printf "Removing persistent data..."
+    # Wait db-server to stop
+    while [ true ]; do
+        sleep 1
+        db_container=$(docker ps -aqf "name=${IMAGE_DB}")
+        if [ ! ${db_container} ]; then
+            break
+        fi
+    done
     if [ $# -eq 0 ]; then
         rm -rf ./data/db/*
         cp ./data/cache/.gitkeep ./data/db/.gitkeep

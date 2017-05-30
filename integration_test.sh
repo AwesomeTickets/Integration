@@ -75,7 +75,6 @@ load_all
 build_all
 
 printf "Creating integration test stack...\n"
-clean_data "test"
 docker stack deploy -c ${FILE_COMPOSE_TEST} ${STACK_TEST}
 printf "Done.\n\n"
 
@@ -94,6 +93,7 @@ printf "Attaching test container...\n"
 docker attach ${service_container}
 exit_code=$(docker inspect -f "{{.State.ExitCode}}" ${service_container})
 clean_stack
+clean_data "test"
 if [ ${exit_code} != 0 ]; then
     printf "Integration test failed with exit code ${exit_code}.\n"
     exit ${exit_code}

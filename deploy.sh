@@ -22,14 +22,6 @@ done
 
 if [ ${CLEAN} = true ]; then
     clean_stack
-    # Wait db-server to stop
-    while [ true ]; do
-        sleep 1
-        db_container=$(docker ps -aqf "name=${IMAGE_DB}")
-        if [ ! ${db_container} ]; then
-            break
-        fi
-    done
     clean_data
     exit 0
 fi

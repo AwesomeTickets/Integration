@@ -17,7 +17,5 @@ before_install:
   - docker --version
 
 script:
-  - chmod +x ./deploy.sh
   - chmod +x ./integration_test.sh
-  - ./deploy.sh -c
   - ./integration_test.sh -u -q
