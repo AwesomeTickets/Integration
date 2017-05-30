@@ -49,26 +49,27 @@ upload_image() {
 }
 
 load_all() {
+    load_repo ${SERVER_SERVICE}
+    load_repo ${SERVER_PROXY}
     load_repo ${SERVER_CACHE}
     load_repo ${SERVER_DB}
-    load_repo ${SERVER_SERVICE}
-    load_repo ${SERVER_STATICPAGE}
 }
 
 build_all() {
+    cd ${SERVER_SERVICE} && echo ${LCK} > .${STACK} && cd ..
+    build_image ${SERVER_SERVICE} ${IMAGE_SERVICE}
+    build_image ${SERVER_PROXY} ${IMAGE_PROXY}
     build_image ${SERVER_CACHE} ${IMAGE_CACHE}
     build_image ${SERVER_DB} ${IMAGE_DB}
-    build_image ${SERVER_SERVICE} ${IMAGE_SERVICE}
-    build_image ${SERVER_STATICPAGE} ${IMAGE_STATICPAGE}
     run_quiet "docker rmi $(docker images -qf 'dangling=true')"
 }
 
 upload_all() {
     run_quiet "docker login -u ${REPO_USR} -p ${REPO_PSWD} ${REGISTRY}"
+    upload_image ${IMAGE_SERVICE}
+    upload_image ${IMAGE_PROXY}
     upload_image ${IMAGE_CACHE}
     upload_image ${IMAGE_DB}
-    upload_image ${IMAGE_SERVICE}
-    upload_image ${IMAGE_STATICPAGE}
 }
 
 load_all

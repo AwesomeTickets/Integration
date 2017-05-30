@@ -7,15 +7,15 @@ STACK_TEST="${STACK}-test"
 
 NS="${STACK}"
 
+SERVER_SERVICE="ServiceServer"
+SERVER_PROXY="StaticPageServer"
 SERVER_CACHE="CacheServer"
 SERVER_DB="DatabaseServer"
-SERVER_SERVICE="ServiceServer"
-SERVER_STATICPAGE="StaticPageServer"
 
+IMAGE_SERVICE="service-server"
+IMAGE_PROXY="proxy-server"
 IMAGE_CACHE="cache-server"
 IMAGE_DB="db-server"
-IMAGE_SERVICE="service-server"
-IMAGE_STATICPAGE="proxy-server"
 
 FILE_COMPOSE="docker-compose.yml"
 FILE_COMPOSE_TEST="docker-compose-test.yml"

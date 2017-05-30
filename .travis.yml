@@ -17,5 +17,5 @@ before_install:
   - docker --version
 
 script:
-  - chmod +x ./integration_test.sh
-  - ./integration_test.sh -u -q
+  - sudo chmod +x ./integration_test.sh
+  - sudo ./integration_test.sh -u -q
