@@ -2,7 +2,7 @@ version: "3"
 services:
 
   db-server:
-    image: registry.cn-shenzhen.aliyuncs.com/awesometickets/db-server
+    image: db-server
     deploy:
       restart_policy:
         condition: on-failure
@@ -15,7 +15,7 @@ services:
       - webnet
 
   cache-server:
-    image: registry.cn-shenzhen.aliyuncs.com/awesometickets/cache-server
+    image: cache-server
     deploy:
       restart_policy:
         condition: on-failure
@@ -25,7 +25,7 @@ services:
       - webnet
 
   proxy-server:
-    image: registry.cn-shenzhen.aliyuncs.com/awesometickets/proxy-server
+    image: proxy-server
     deploy:
       restart_policy:
         condition: on-failure
@@ -37,7 +37,7 @@ services:
       - webnet
 
   service-server:
-    image: registry.cn-shenzhen.aliyuncs.com/awesometickets/service-server
+    image: service-server
     deploy:
       replicas: 2
       restart_policy:
