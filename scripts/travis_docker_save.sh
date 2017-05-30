@@ -3,7 +3,7 @@
 . ./scripts/common.sh
 
 save_image() {
-    printf "Saving image '$2' to '$1'..."
+    printf "Saving image '$2' to '$1'...\n"
     if [ ${TRAVIS_PULL_REQUEST} = false ]; then
         mkdir -p $(dirname $1)
         docker save $(docker history -q $2 | grep -v '<missing>') | gzip > $1

@@ -1,6 +1,29 @@
 version: "3"
 services:
 
+  db-server:
+    image: registry.cn-shenzhen.aliyuncs.com/awesometickets/db-server
+    deploy:
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - "./data/db:/var/lib/mysql"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
+
+  cache-server:
+    image: registry.cn-shenzhen.aliyuncs.com/awesometickets/cache-server
+    deploy:
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - "./data/cache:/data"
+    networks:
+      - webnet
+
   proxy-server:
     image: registry.cn-shenzhen.aliyuncs.com/awesometickets/proxy-server
     deploy:
@@ -19,31 +42,11 @@ services:
       replicas: 2
       restart_policy:
         condition: on-failure
+    depends_on:
+      - "cache-server"
+      - "db-server"
     volumes:
       - "./service-server.properties:/service-server/src/main/webapp/config.properties"
-    networks:
-      - webnet
-
-  cache-server:
-    image: registry.cn-shenzhen.aliyuncs.com/awesometickets/cache-server
-    deploy:
-      restart_policy:
-        condition: on-failure
-    volumes:
-      - "./data/cache:/data"
-    networks:
-      - webnet
-
-  db-server:
-    image: registry.cn-shenzhen.aliyuncs.com/awesometickets/db-server
-    deploy:
-      restart_policy:
-        condition: on-failure
-    volumes:
-      - "./data/db:/var/lib/mysql"
-    deploy:
-      placement:
-        constraints: [node.role == manager]
     networks:
       - webnet
 

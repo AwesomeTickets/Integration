@@ -3,7 +3,7 @@
 . ./scripts/common.sh
 
 load_image() {
-    printf "Loading image from '$1'..."
+    printf "Loading image from '$1'...\n"
     if [ -f $1 ]; then
         gunzip -c $1 | docker load
     fi
