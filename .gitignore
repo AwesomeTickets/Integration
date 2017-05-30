@@ -2,3 +2,13 @@ CacheServer
 DatabaseServer
 ServiceServer
 StaticPageServer
+
+data/cache/*
+data/db/*
+data/test/cache/*
+data/test/db/*
+
+!data/cache/.gitkeep
+!data/db/.gitkeep
+!data/test/cache/.gitkeep
+!data/test/db/.gitkeep

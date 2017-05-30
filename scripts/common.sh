@@ -35,10 +35,10 @@ clean_data() {
     printf "Removing persistent data..."
     if [ $# -eq 0 ]; then
         rm -rf ./data/db/*
-        cp ./data/cache/.gitignore ./data/db/.gitignore
+        cp ./data/cache/.gitkeep ./data/db/.gitkeep
     elif [ $1 = "test" ]; then
         rm -rf ./data/test/db/*
-        cp ./data/test/cache/.gitignore ./data/test/db/.gitignore
+        cp ./data/test/cache/.gitkeep ./data/test/db/.gitkeep
     fi
     printf "Done.\n"
 }
