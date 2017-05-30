@@ -3,14 +3,18 @@
 . ./scripts/common.sh
 
 UPLOAD=false
+QUIET=""
 
 for param in $*; do
     if [ ${param} = "-u" ]; then
         UPLOAD=true
+    elif [ ${param} = "-q" ]; then
+        QUIET="-q"
     elif [ ${param} = "-h" ]; then
         printf "Usage: $0 [OPTIONS]\n\n\
 OPTIONS:\n\
   -u  upload images to remote repository if tests pass (require env 'REPO_USR' and 'REPO_PSWD')\n\
+  -q  suppress the docker build output
   -h  show this help prompt\n"
         exit 0
     fi
@@ -31,7 +35,7 @@ load_repo() {
 build_image() {
     printf "Building image '$2'...\n"
     cd $1
-    docker build -t $2 .
+    docker build ${QUIET} -t $2 .
     cd ..
     printf "Done.\n\n"
 }

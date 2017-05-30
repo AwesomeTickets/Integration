@@ -11,6 +11,13 @@ branches:
     - master
     - /^(dev)|(dev_.*)$/
 
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
+  - docker --version
+
 script:
+  - chmod +x ./deploy.sh
   - chmod +x ./integration_test.sh
-  - ./integration_test.sh -u
+  - ./deploy.sh -c
+  - ./integration_test.sh -u -q
