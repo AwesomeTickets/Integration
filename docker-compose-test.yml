@@ -1,0 +1,39 @@
+version: "3"
+services:
+
+  service-server:
+    image: service-server
+    command: mvn clean test
+    deploy:
+      restart_policy:
+        condition: none
+    volumes:
+      - "./service-server.properties:/service-server/src/main/webapp/config.properties"
+    networks:
+      - webnet
+
+  cache-server:
+    image: cache-server
+    deploy:
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - "./data/test/cache:/data"
+    networks:
+      - webnet
+
+  db-server:
+    image: db-server
+    deploy:
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - "./data/test/db:/var/lib/mysql"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
+
+networks:
+  webnet:
