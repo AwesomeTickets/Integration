@@ -38,6 +38,7 @@ services:
 
   service-server:
     image: service-server
+    command: mvn -Djava.security.egd=file:/dev/./urandom clean tomcat7:run
     deploy:
       replicas: 2
       restart_policy:
