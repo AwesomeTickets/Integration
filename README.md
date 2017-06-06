@@ -24,6 +24,10 @@ Integration and deployment scripts of AwesomeTickets system.
 
 **Notes:** Use param `-h` to see the usages of these scripts.
 
+## Blogs
+
+- [AwesomeTickets 项目架构与 Docker 部署](http://stevennl.com/post/awesometickets-architecture-and-docker-deployment/)
+
 ## License
 
 See the [LICENSE](./LICENSE) file for license rights and limitations. 
