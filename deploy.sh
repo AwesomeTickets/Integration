@@ -13,7 +13,7 @@ for param in $*; do
     elif [ ${param} = "-h" ]; then
         printf "Usage: $0 [OPTIONS]\n\n\
 OPTIONS:\n\
-  -c  clean all stacks, persistent data and exit\n\
+  -c  clean all stacks\n\
   -p  pull images from registry before deployment\n\
   -h  show this help prompt\n"
         exit 0
@@ -22,7 +22,6 @@ done
 
 if [ ${CLEAN} = true ]; then
     clean_stack
-    clean_data
     exit 0
 fi
 
