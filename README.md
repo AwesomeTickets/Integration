@@ -1,4 +1,4 @@
-# Integration [![Build Status](https://travis-ci.org/AwesomeTickets/Integration.svg?branch=master)](https://travis-ci.org/AwesomeTickets/Integration)
+# Integration
 
 Integration and deployment scripts of AwesomeTickets system.
 
